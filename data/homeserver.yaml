@@ -1,0 +1,72 @@
+server_name: "chat.yourapp.com"
+public_baseurl: "https://chat.yourapp.com/"
+
+pid_file: /data/homeserver.pid
+
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [client, federation]
+        compress: false
+
+database:
+  name: psycopg2
+  args:
+    user: synapse
+    password: strongpassword
+    database: synapse
+    host: postgres
+    port: 5432
+    cp_min: 5
+    cp_max: 10
+
+log_config: "/data/log.config"
+
+media_store_path: /data/media_store
+
+registration_shared_secret: "SUPER_SECRET_KEY"
+
+report_stats: false
+
+macaroon_secret_key: "ANOTHER_SECRET_KEY"
+
+form_secret: "FORM_SECRET_KEY"
+
+signing_key_path: "/data/chat.yourapp.com.signing.key"
+
+trusted_key_servers:
+  - server_name: "matrix.org"
+
+enable_registration: false
+
+enable_registration_without_verification: false
+
+allow_guest_access: false
+
+max_upload_size: 50M
+
+rc_message:
+  per_second: 1000
+  burst_count: 1000
+
+rc_registration:
+  per_second: 1000
+  burst_count: 1000
+
+rc_login:
+  address:
+    per_second: 1000
+    burst_count: 1000
+
+rc_login_failed_attempts:
+  per_second: 1000
+  burst_count: 1000
+
+caches:
+  global_factor: 1.0
+
+presence:
+  enabled: true
