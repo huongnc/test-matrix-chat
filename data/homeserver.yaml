@@ -12,6 +12,11 @@ listeners:
       - names: [client, federation]
         compress: false
 
+jwt_config:
+  enabled: true
+  secret: a-string-secret-at-least-256-bits-long
+  algorithm: HS256
+
 database:
   name: psycopg2
   args:
