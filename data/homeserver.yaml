@@ -14,7 +14,7 @@ listeners:
 
 jwt_config:
   enabled: true
-  secret: a-string-secret-at-least-256-bits-long
+  secret: 5269452819968448e57b3266496eb7d73ee86e44b69f12b718bfecd2fcb808ce
   algorithm: HS256
 
 database:
@@ -27,6 +27,22 @@ database:
     port: 5432
     cp_min: 5
     cp_max: 10
+
+media_store_backend: s3
+
+media_storage_providers:
+  - module: s3_storage_provider.S3StorageProviderBackend
+    store_local: true
+    store_remote: true
+    store_synchronous: true
+    config:
+      bucket: thienkhoi-development
+      region_name: sgp1
+      endpoint_url: https://sgp1.digitaloceanspaces.com
+      access_key_id: DO00KG9E7YZPQLZ2BXYG
+      secret_access_key: /+UXhiKwupRwUE1m015Ypwla9Otm5Wg97kogYb0QyCU
+
+
 
 log_config: "/data/log.config"
 

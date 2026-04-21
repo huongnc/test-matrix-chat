@@ -1,6 +1,6 @@
 services:
   synapse:
-    image: matrixdotorg/synapse:latest
+    build: .
     container_name: synapse
     restart: always
     depends_on:
